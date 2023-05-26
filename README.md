@@ -1,8 +1,8 @@
 # bananaDB
 
-<imge src="./assets/banana.png" width="120">
+<img src="./assets/banana.png" width="120">
 
-Simple key-value store as an exploration project.a
+Simple key-value store as an exploration project.
 
 ## Build and run:
 1. Generate build config using CMake: `cmake -B build`
