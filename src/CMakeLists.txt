@@ -1,0 +1,6 @@
+add_executable(bananaDB main.cpp)
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
+target_include_directories(bananaDB PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/server)
+add_subdirectory(server)
+add_subdirectory(bananadb)
+target_link_libraries(bananaDB server bananadb)
