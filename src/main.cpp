@@ -1,8 +1,7 @@
 #include <iostream>
-#include "server.h"
+#include <server/server.h>
 
-int main(){
-    std::cout << "hello" << std::endl;
-    hello();
-    return 0;
+int main(int argc, char ** argv) {
+    auto *s = new server();
+    s->run();
 }
