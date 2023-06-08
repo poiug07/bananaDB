@@ -33,7 +33,7 @@ void server::handle_connection(int sock, Store* store) {
 
         // check if message is "quit"
         std::cout << "Received message: " << buffer << "\n";
-        if (std::strcmp(buffer, "quit\n")==0) {
+        if (std::strcmp(buffer, "QUIT\n")==0) {
             break;
         }
 
