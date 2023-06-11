@@ -4,9 +4,12 @@
 #include <map>
 #include <string>
 #include <vector>
+#include <shared_mutex>
+#include <thread>
 
 class Store {
 private:
+    std::shared_mutex mutex_;
     std::map<std::string, std::string> store;
 public:
     // Set method returns true if insertion is successful, otherwise it return false.

@@ -5,11 +5,13 @@
 #include <vector>
 
 bool Store::Set(const std::string& key, const std::string& val) {
-    const auto it= this->store.insert({key, val});
-    return it.second;
+    std::lock_guard<std::shared_mutex> g(this->mutex_);
+    const auto it= this->store.insert_or_assign(key, val);
+    return it.first!=this->store.end();
 }
 
 std::pair<std::string, bool> Store::Get(const std::string& key) {
+        std::shared_lock<std::shared_mutex> g(this->mutex_);
         const auto it = this->store.find(key);
         if(it == this->store.end()) {
             return std::make_pair("", false);
@@ -18,10 +20,12 @@ std::pair<std::string, bool> Store::Get(const std::string& key) {
 }
 
 bool Store::DeleteByKey(const std::string& key) {
+    std::lock_guard<std::shared_mutex> g(this->mutex_);
     return this->store.erase(key);
 }
 
 std::vector<std::string> Store::GetAllKeys() {
+    std::shared_lock<std::shared_mutex> g(this->mutex_);
     std::vector<std::string> keys;
     for(auto & it : this->store) {
         keys.push_back(it.first);
@@ -30,6 +34,7 @@ std::vector<std::string> Store::GetAllKeys() {
 }
 
 std::string Store::GetSet(const std::string &key, const std::string &default_val) {
+    std::lock_guard<std::shared_mutex> g(this->mutex_);
     auto it = this->store.find(key);
     if(it==this->store.end()) {
         this->Set(key, default_val);
