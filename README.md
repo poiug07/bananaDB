@@ -38,4 +38,5 @@ Terminates the connection.
 * Add tests to check lifetime of object.
 * decide what is ownership in our module
 * Consider fuzz testing
-* Add Clang Tidy or something similar for formatting and/or static checks 
+* Add Clang Tidy or something similar for formatting and/or static checks
+* We implemented wrong GetSet logic: what we might want is, replacing value, but returning original value instead.

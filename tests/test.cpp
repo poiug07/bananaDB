@@ -2,6 +2,7 @@
 #include <boost/test/included/unit_test.hpp>
 
 #include <string>
+#include <vector>
 #include <bananadb/store.h>
 
 BOOST_AUTO_TEST_CASE(set_get_test) {
@@ -77,6 +78,15 @@ BOOST_AUTO_TEST_CASE(delete_by_non_existing_key) {
 
 BOOST_AUTO_TEST_CASE(get_all_keys) {
     auto s = Store();
-    std::string[] keys = { "key1" };
+        std::string keys[] = { "key1", "key2", "key3", "keya", "keyb", "keyc" };
     std::string value = "value" ;
+    for(auto key: keys) {
+        s.Set(key, value);
+    }
+
+    std::vector<std::string> getKeys = s.GetAllKeys();
+    BOOST_REQUIRE(6==getKeys.size());
+    for(auto key: keys) {
+        BOOST_REQUIRE(std::find(getKeys.begin(), getKeys.end(), key) != getKeys.end());
+    }
 }
