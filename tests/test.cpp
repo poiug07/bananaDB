@@ -63,7 +63,7 @@ BOOST_AUTO_TEST_CASE(delete_by_key) {
 }
 
 BOOST_AUTO_TEST_CASE(delete_by_non_existing_key) {
-        auto s = Store();
+    auto s = Store();
     std::string key1="key1";
     std::string val1="value1";
     std::string key2="key2";
@@ -73,4 +73,10 @@ BOOST_AUTO_TEST_CASE(delete_by_non_existing_key) {
     BOOST_REQUIRE(!deleted);
     std::pair<std::string, bool> get = s.Get(key1);
     BOOST_REQUIRE(!get.second);
+}
+
+BOOST_AUTO_TEST_CASE(get_all_keys) {
+    auto s = Store();
+    std::string[] keys = { "key1" };
+    std::string value = "value" ;
 }

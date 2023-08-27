@@ -1,6 +1,8 @@
 # bananaDB :banana:
 
-<img src="./assets/banana.png" width="120">
+<p align="center">
+    <img src="./assets/banana.png" width="120">
+</p>
 
 Simple key-value store as an exploration project. Linux focused development, and tools.
 
@@ -31,3 +33,9 @@ Terminates the connection.
 * `generate_cmake` - to generate cmake build directory.
 * `run` - to run the project executable.
 * `test` - to run tests.
+
+## TODO
+* Add tests to check lifetime of object.
+* decide what is ownership in our module
+* Consider fuzz testing
+* Add Clang Tidy or something similar for formatting and/or static checks 
