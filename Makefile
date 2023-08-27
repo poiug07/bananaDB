@@ -14,3 +14,7 @@ test: build_tests
 
 run: build
 	./bin/bananaDB
+
+clean:
+	rm -rf bin
+	rm -rf build

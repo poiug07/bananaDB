@@ -1,4 +1,4 @@
-# bananaDB
+# bananaDB :banana:
 
 <img src="./assets/banana.png" width="120">
 
